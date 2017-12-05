@@ -10,12 +10,46 @@
 
 </head>
 <body>
+	<script type="text/javascript">
+	function getParameterByName(name, url) {
+	    if (!url) url = window.location.href;
+	    name = name.replace(/[\[\]]/g, "\\$&");
+	    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+	        results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+	    return decodeURIComponent(results[2].replace(/\+/g, " "));
+	  }
+
+	  $(function() {
+	  	var locale = getParameterByName('locale');
+	  	if(locale == null) {
+	  		locale = 'fi';
+	  	}
+	  	$("a, h1").each(function() {
+	  		var lang = $(this).attr('lang');
+	  		if(typeof lang == typeof undefined || lang == false) {
+
+	  		} else if(lang == locale) {
+	  			$(this).show();
+	  		} else {
+				$(this).hide();				
+	  		}
+	  	});
+	  });
+	</script>
 	<div id="navi">
 		<div class="l-top-bar">
 		    <div class="l-top-bar__subregion">
 		        <div class="l-top-bar__main">
-		            <a class="logo" href="/fi">
+		            <a lang="fi" class="logo" href="/fi">
 		                <h1 class="logo__sitename">OPINNOT</h1>
+	                </a>
+	                <a lang="en" class="logo" href="/en">
+		                <h1 class="logo__sitename">STUDIES</h1>
+		            </a>
+		            <a lang="sv" class="logo" href="/sv">
+		                <h1 class="logo__sitename">STUDIER</h1>		                
 		            </a>
 		        </div>
 		    </div>
@@ -25,32 +59,50 @@
 		  		<ul class="menu">
 		  			<li class="is-lvl1 is-active main-menu__front">
 		      			<span class="main-menu__home"></span>
-		      			<a href="https://student.helsinki.fi " class="active">Etusivu</a>
+		      			<a lang="fi" href="https://student.helsinki.fi" class="active">Etusivu</a>
+		      			<a lang="en" href="https://student.helsinki.fi" class="active">Front page</a>
+		      			<a lang="sv" href="https://student.helsinki.fi" class="active">Förstasidan</a>
 		    		</li>
 		  			<li class="is-lvl1">
-		      			<a href="https://sis-helsinki.funidata.fi/student/degree">Opintojen suunnittelu</a>
+		      			<a lang="fi" href="https://sis-helsinki.funidata.fi/student/degree">Opintojen suunnittelu</a>		      			
+		      			<a lang="en" href="https://sis-helsinki.funidata.fi/student/degree">Study planning</a>
+		      			<a lang="sv" href="https://sis-helsinki.funidata.fi/student/degree">Studieplanering</a>
 		    		</li>
 		    		<li class="is-lvl1">
-		      			<a href="https://guide.student.helsinki.fi/fi">Opiskelijan ohjeet</a>
+		      			<a lang="fi" href="https://guide.student.helsinki.fi/fi">Opiskelijan ohjeet</a>
+		      			<a lang="en" href="https://guide.student.helsinki.fi/en">Instructions for students</a>
+		      			<a lang="sv" href="https://guide.student.helsinki.fi/sv">Instruktioner för studerande</a>
 		    		</li>
 		    		<li class="last is-lvl1 is-expandable">
 		      			<span class="main-menu__expand-toggle main-menu__expand"></span>
-		      			<a class="main-menu__expand-toggle" href="">Työkalut</a>
+		      			<a lang="fi" class="main-menu__expand-toggle" href="">Työkalut</a>
+		      			<a lang="en" class="main-menu__expand-toggle" href="">Tools</a>
+		      			<a lang="sv" class="main-menu__expand-toggle" href="">Verktyg</a>
 		      			<ul class="menu">
 							<li class="is-lvl2">
-								<a href="https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=1">Opintosuoritukset</a>
+								<a lang="fi" href="https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=1">Opintosuoritukset</a>
+								<a lang="en" href="https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=6">Completed studies</a>
+								<a lang="sv" href="https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=2">Prestationer</a>
 							</li>
 							<li class="is-lvl2">
-								<a href="http://www.helsinki.fi/office365">Sähköposti</a>
+								<a lang="fi" href="http://www.helsinki.fi/office365">Sähköposti</a>
+								<a lang="en" href="http://www.helsinki.fi/office365">Email</a>
+								<a lang="sv" href="http://www.helsinki.fi/office365">E-post</a>
 							</li>
 							<li class="is-lvl2">
-								<a href="http://www.helsinki.fi/kirjasto/fi/etusivu">Kirjasto</a>
+								<a lang="fi" href="http://www.helsinki.fi/kirjasto/fi/etusivu">Kirjasto</a>
+								<a lang="en" href="http://www.helsinki.fi/kirjasto/en/home">Library</a>
+								<a lang="sv" href="http://www.helsinki.fi/kirjasto/sv/hem">Bibliotek</a>
 							</li>
 							<li class="is-lvl2">
-								<a href="https://mot.kielikone.fi/mot/hy/netmot.exe">MOT-sanakirjat</a>
+								<a lang="fi" href="https://mot.kielikone.fi/mot/hy/netmot.exe">MOT-sanakirjat</a>
+								<a lang="en" href="https://mot.kielikone.fi/mot/hy/netmot.exe">MOT Dictionaries</a>
+								<a lang="sv" href="https://mot.kielikone.fi/mot/hy/netmot.exe">MOT-ordböcker</a>
 							</li>
 							<li class="is-lvl2">
-								<a href="https://opinder.helsinki.fi">Opinder-yhteisöpalvelu</a>
+								<a lang="fi" href="https://opinder.helsinki.fi">Opinder-yhteisöpalvelu</a>
+								<a lang="en" href="https://opinder.helsinki.fi">Opinder social networking service</a>
+								<a lang="sv" href="https://opinder.helsinki.fi">Opinder social nätverkstjänst</a>								
 							</li>
 						</ul>
 		        	</li>			
@@ -61,19 +113,29 @@
 					<li class="is-lvl1 last is-expandable">
 						<ul class="menu">
 							<li class="is-lvl2">
-								<a href="https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=1">Opintosuoritukset</a>
+								<a lang="fi" href="https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=1">Opintosuoritukset</a>
+								<a lang="en" href="https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=6">Completed studies</a>
+								<a lang="sv" href="https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=2">Prestationer</a>
 							</li>
 							<li class="is-lvl2">
-								<a href="http://www.helsinki.fi/office365">Sähköposti</a>
+								<a lang="fi" href="http://www.helsinki.fi/office365">Sähköposti</a>
+								<a lang="en" href="http://www.helsinki.fi/office365">Email</a>
+								<a lang="sv" href="http://www.helsinki.fi/office365">E-post</a>
 							</li>
 							<li class="is-lvl2">
-								<a href="http://www.helsinki.fi/kirjasto/fi/etusivu">Kirjasto</a>
+								<a lang="fi" href="http://www.helsinki.fi/kirjasto/fi/etusivu">Kirjasto</a>
+								<a lang="en" href="http://www.helsinki.fi/kirjasto/en/home">Library</a>
+								<a lang="sv" href="http://www.helsinki.fi/kirjasto/sv/hem">Bibliotek</a>
 							</li>
 							<li class="is-lvl2">
-								<a href="https://mot.kielikone.fi/mot/hy/netmot.exe">MOT-sanakirjat</a>
+								<a lang="fi" href="https://mot.kielikone.fi/mot/hy/netmot.exe">MOT-sanakirjat</a>
+								<a lang="en" href="https://mot.kielikone.fi/mot/hy/netmot.exe">MOT Dictionaries</a>
+								<a lang="sv" href="https://mot.kielikone.fi/mot/hy/netmot.exe">MOT-ordböcker</a>
 							</li>
 							<li class="is-lvl2">
-								<a href="https://opinder.helsinki.fi">Opinder-yhteisöpalvelu</a>
+								<a lang="fi" href="https://opinder.helsinki.fi">Opinder-yhteisöpalvelu</a>
+								<a lang="en" href="https://opinder.helsinki.fi">Opinder social networking service</a>
+								<a lang="sv" href="https://opinder.helsinki.fi">Opinder social nätverkstjänst</a>								
 							</li>
 						</ul>
 					</li>
